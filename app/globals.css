@@ -74,5 +74,9 @@
     }
   }
 
+ .ql-container {
+  font-size: 16px !important;
+ }
+
   /* Look into wether this import directive is needed anymore for current uploadthing specs */
   @import '~@uploadthing/react/styles.css'
