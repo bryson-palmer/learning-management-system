@@ -1,8 +1,8 @@
-import Mux from "@mux/mux-node"
-import { auth } from "@clerk/nextjs/server"
-import { NextResponse } from "next/server"
+import Mux from '@mux/mux-node'
+import { auth } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
 
-import { db } from "@/lib/db"
+import { db } from '@/lib/db'
 
 const mux = new Mux({
   tokenId: process.env.MUX_TOEKN_ID,
