@@ -8,7 +8,7 @@ export default clerkMiddleware(
       auth().protect()
     }
   },
-  { debug: true }
+  // { debug: true }
 )
 
 export const config = {
