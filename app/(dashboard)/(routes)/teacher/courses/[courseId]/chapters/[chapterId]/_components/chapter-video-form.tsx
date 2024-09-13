@@ -4,7 +4,7 @@ import * as z from 'zod'
 import axios from 'axios'
 
 import MuxPlayer from '@mux/mux-player-react'
-import { Pencil, PlusCircle, Video } from 'lucide-react'
+import { Pencil, PlusCircle, RefreshCcw, Video } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -44,6 +44,8 @@ export const ChapterVideoForm = ({
       toast.error('Something went wrong')
     }
   }
+
+  const onRefresh = () => window.location.reload()
 
   return (
     <div className='mt-6 border bg-slate-100 rounded-md p-4'>
@@ -96,8 +98,17 @@ export const ChapterVideoForm = ({
         </div>
       )}
       {initialData.videoUrl && !isEditing && (
-        <div className='text-sx text-muted-foreground mt-2'>
-          Videos can take a few minutes to process. Refresh the page if video does not appear.
+        <div className='flex items-center justify-between'>
+          <div className='text-sx text-muted-foreground mt-2'>
+            Videos can take a few minutes to process. Refresh the page if video does not appear.
+          </div>
+          <Button
+            className='ml-4'
+            onClick={onRefresh}
+            size='sm'
+          >
+            <RefreshCcw size={20} />
+          </Button>
         </div>
       )}
     </div>
