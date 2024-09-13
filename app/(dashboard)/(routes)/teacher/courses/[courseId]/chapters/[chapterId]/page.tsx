@@ -72,7 +72,7 @@ const ChapterIdPage = async ({
                   Chapter Creation
                 </h1>
                 <span className='text-sm text-slate-700'>
-                  Complete all the fiels {completionText}
+                  Complete all the fields {completionText}
                 </span>
               </div>
               <ChapterActions
