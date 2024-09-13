@@ -19,6 +19,7 @@ export const getChapter = async ({
         id: courseId,
       },
       select: {
+        description: true,
         price: true,
       }
     })
