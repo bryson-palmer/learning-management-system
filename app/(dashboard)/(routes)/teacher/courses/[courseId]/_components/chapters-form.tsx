@@ -50,12 +50,14 @@ export const ChaptersForm = ({
     }
   })
 
+  const { resetField } = form
   const { isSubmitting, isValid } = form.formState
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post(`/api/courses/${courseId}/chapters`, values)
       toast.success('Chapter updated')
       toggleCreating()
+      resetField('title')
       router.refresh()
     } catch {
       toast.error('Something went wrong')
@@ -138,7 +140,7 @@ export const ChaptersForm = ({
           'text-sm mt-2',
           !initialData.chapters.length && 'text-slate-500 italic'
         )}>
-          {!initialData.chapters.length && 'Not chapters'}
+          {!initialData.chapters.length && 'No chapters'}
           <ChaptersList
             onEdit={onEdit}
             onReorder={onReorder}
