@@ -1,8 +1,9 @@
 'use client'
 
-import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation";
+import { cn } from '@/lib/utils'
+import { LucideIcon } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useDrawerStore } from '@/app/store'
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -17,6 +18,7 @@ export const SidebarItem = ({
 }: SidebarItemProps) => {
   const pathname = usePathname()
   const router = useRouter()
+  const setShowSheet = useDrawerStore(state => state.setShowSheet)
 
   const isActive = // check if we are on an active route
     (pathname === '/' && href === '/') || // are we on the root page?
@@ -26,6 +28,7 @@ export const SidebarItem = ({
   const onClick = () => {
     router.push(href)
     router.refresh()
+    setShowSheet(false)
   }
 
   return (
@@ -38,7 +41,7 @@ export const SidebarItem = ({
         isActive && 'text-sky-700 bg-sky-200/20 hover:bg-sky-200/20 hover:text-sky-700'
       )}
     >
-      <div className="flex items-center gap-x-2 py-4">
+      <div className='flex items-center gap-x-2 py-4'>
         <Icon
           size={22}
           className={cn(
