@@ -3,7 +3,7 @@
 import { useAuth, UserButton } from '@clerk/nextjs'
 import { LogOut } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { isTeacher } from '@/lib/teacher'
@@ -13,10 +13,15 @@ import { SearchInput } from "./search-input"
 export const NavbarRoutes = () => {
   const { userId } = useAuth()
   const pathname = usePathname()
+  const router = useRouter()
 
   const isTeacherPage = pathname?.startsWith('/teacher')
   const isCoursePage = pathname?.includes('/courses')
   const isSearchPage = pathname === '/search'
+
+  const handleExit = () => {
+    return router.back()
+  }
 
   return (
     <>
@@ -27,12 +32,10 @@ export const NavbarRoutes = () => {
       )}
       <div className='flex gap-x-2 ml-auto'>
         {isTeacherPage || isCoursePage ? (
-          <Link href='/'>
-            <Button size='sm' variant='ghost'>
-              <LogOut className="h-4 w-4 mr-2"/>
-              Exit
-            </Button>
-          </Link>
+          <Button onClick={handleExit} size='sm' variant='ghost'>
+            <LogOut className="h-4 w-4 mr-2"/>
+            Exit
+          </Button>
         ) : isTeacher(userId) ? (
           <Link href='/teacher/courses'>
             <Button size='sm' variant='ghost'>
