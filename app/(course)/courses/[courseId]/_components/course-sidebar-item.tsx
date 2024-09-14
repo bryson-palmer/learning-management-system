@@ -1,9 +1,10 @@
 'use client'
 
-import { cn } from '@/lib/utils'
-
 import { CheckCircle, Lock, PlayCircle } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
+
+import { useDrawerStore } from '@/app/store'
+import { cn } from '@/lib/utils'
 
 interface CourseSidebarItemProps {
   id: string,
@@ -22,12 +23,14 @@ export const CourseSidebarItem = ({
 }: CourseSidebarItemProps) => {
   const pathname = usePathname()
   const router = useRouter()
+  const setShowSheet = useDrawerStore(state => state.setShowSheet)
 
   const Icon = isLocked ? Lock : (isCompleted ? CheckCircle : PlayCircle)
   const isActive = pathname?.includes(id)
 
   const onClick = () => {
     router.push(`/courses/${courseId}/chapters/${id}`)
+    setShowSheet(false)
   }
 
   return (
