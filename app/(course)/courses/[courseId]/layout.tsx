@@ -61,6 +61,7 @@ return (
         progressCount={progressCount}
       />
     </div>
+    {/* Hidden static Course sidebar but show on medium screens and above */}
     <div className='hidden md:flex h-full w-80 flex-col fixed inset-y-0 z-50'>
       <CourseSidebar
         course={course}
