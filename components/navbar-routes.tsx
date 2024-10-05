@@ -20,7 +20,7 @@ export const NavbarRoutes = () => {
   const isSearchPage = pathname === '/search'
 
   const handleExit = () => {
-    return router.back()
+    return router.push('/')
   }
 
   return (
