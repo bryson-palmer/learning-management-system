@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LMS Prototype
+## Learning Management System Prototype Platform
+Based on the youtube tutorial Build a Course & LMS Platform: Next 13, React, Stripe, Mux, Prisma, Tailwind, MySQL | Udemy Clone by [Code With Antonio](https://www.youtube.com/watch?v=Big_aFLmekI)
 
 ## Getting Started
 
